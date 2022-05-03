@@ -5,10 +5,11 @@
 
 Make sure you have the following tools installed on your computer: 
 
-- [Terraform CLI](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+- [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - [Terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/install/)
 - [AWS credentials in the terminal](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 - IDE with Terraform support (e.g. [VS Code](https://code.visualstudio.com/) / [Terraform extension](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform))
+- [tfenv (recommended)](https://github.com/tfutils/tfenv)
 
 ## Labs
 
