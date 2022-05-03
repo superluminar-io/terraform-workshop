@@ -1,10 +1,5 @@
 # Bootstrap
 
-## Prerequisites
-
-- [Terraform CLI](https://learn.hashicorp.com/tutorials/terraform/install-cli)
-- [AWS credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
-
 ## Goals
 - Set up Terraform
 - Create first resource and deploy it

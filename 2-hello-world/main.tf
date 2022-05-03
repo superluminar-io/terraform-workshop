@@ -20,8 +20,9 @@ resource "aws_iam_user_policy_attachment" "ci" {
 }
 
 variable "lambda_function_response" {
-  type = string
-  default = "Hello World :)"
+  type        = string
+  description = "Body response of the hello world lambda function"
+  default     = "Hello World :)"
 }
 
 module "lambda_function" {
@@ -51,5 +52,6 @@ resource "aws_apigatewayv2_api" "hello_world" {
 }
 
 output "endpoint" {
-  value = aws_apigatewayv2_api.hello_world.api_endpoint
+  description = "Hello World API URL"
+  value       = aws_apigatewayv2_api.hello_world.api_endpoint
 }

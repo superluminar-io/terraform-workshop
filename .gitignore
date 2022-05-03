@@ -1,5 +1,13 @@
+# Common
+.DS_Store
+
+# Terraform
 .terraform
 *.tfstate*
 terraform.tfvars
+
+# Lambda Function Builds
 builds
-.DS_Store
+
+# Terragrunt (auto-generated)
+.terragrunt-cache
