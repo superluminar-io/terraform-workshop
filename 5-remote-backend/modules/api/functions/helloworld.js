@@ -1,3 +1,3 @@
 exports.handler = async () => {
-  return process.env.RESPONSE;
+  return { "message": process.env.RESPONSE };
 };

@@ -27,6 +27,12 @@ resource "aws_s3_bucket_website_configuration" "website" {
   }
 }
 
+variable "lambda_function_response" {
+  type        = string
+  description = "Body response of the hello world lambda function"
+  default     = "Hello from Lambda!"
+}
+
 module "lambda_function" {
   source = "terraform-aws-modules/lambda/aws"
 
@@ -51,4 +57,14 @@ resource "aws_apigatewayv2_api" "hello_world" {
   name          = "hello-world"
   protocol_type = "HTTP"
   target        = module.lambda_function.lambda_function_arn
+}
+
+output "website_url" {
+  description = "Static website URL"
+  value = "http://${aws_s3_bucket_website_configuration.website.website_endpoint}"
+}
+
+output "api_url" {
+  description = "Hello World API URL"
+  value       = aws_apigatewayv2_api.hello_world.api_endpoint
 }
