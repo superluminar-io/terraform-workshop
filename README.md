@@ -16,8 +16,8 @@ Make sure you have the following tools installed on your computer:
 2. [Hello World](./2-hello-world/): Extend the codebase and create a simple HTTP API w/ AWS API Gateway and AWS Lambda
 3. [Code Structure](./3-code-structure/): Refactor the codebase and learn more about naming conventions and commong code structures.
 4. [Environments](./4-environments/): Extend the codebase and prepare everything for multiple environments (e.g. staging and prod). Learn more about modules.
-5. [Remote Backend](./5-backend/): Manage Terraform state remotely using AWS S3.
-6. [Terragrunt](./5-backend/): Use Terragrunt to automate the creation of the remote state and clean up the environments.
+5. [Remote Backend](./5-remote-backend/): Manage Terraform state remotely using AWS S3.
+6. [Terragrunt](./6-terragrunt/): Use Terragrunt to automate the creation of the remote state and clean up the environments.
    
 ## License
 
