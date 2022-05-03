@@ -11,6 +11,14 @@ Make sure you have the following tools installed on your computer:
 - IDE with Terraform support (e.g. [VS Code](https://code.visualstudio.com/) / [Terraform extension](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform))
 - [tfenv (recommended)](https://github.com/tfutils/tfenv)
 
+## Features
+
+- Learn how to setup Terraform
+- Learn how to deploy a simple HTTP API using AWS API Gateway and AWS Lambda
+- Learn how to maintain multiple environments (e.g. staging and prod) with module composition
+- Learn how to manage remote states using AWS S3
+- Learn how to improve a growing codebase with Terragrunt
+
 ## Labs
 
 1. [Bootstrap](./1-bootstrap): Get started with Terraform and deploy your first AWS resource. Learn more about data sources along the way.
