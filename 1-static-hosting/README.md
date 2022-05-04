@@ -1,6 +1,6 @@
 # Static Hosting
 
-Welcome to the first lab! 🥳 Let's get started by bootstrapping aTerraform and deploying some resources to AWS. Instead of just deploying some random resources, we want to create a S3 bucket and enable static website hosting. Ultimately, we serve a static HTML file.
+Welcome to the first lab! 🥳 Let's get started by bootstrapping Terraform and deploying some resources to AWS. Instead of just deploying some random resources, we want to create a S3 bucket and enable static website hosting. Ultimately, we serve a static HTML file.
   
 ## Bootstrap Terraform
 
