@@ -6,8 +6,10 @@ provider "aws" {
   region = "eu-west-1"
 }
 
+data "aws_caller_identity" "current" {}
+
 resource "aws_s3_bucket" "website" {
-  bucket = "superluminar-hello-world-website"
+  bucket = "hello-world-website-${data.aws_caller_identity.current.account_id}"
   force_destroy = true
 }
 

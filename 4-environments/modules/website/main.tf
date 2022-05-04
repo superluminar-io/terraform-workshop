@@ -1,5 +1,7 @@
+data "aws_caller_identity" "current" {}
+
 resource "aws_s3_bucket" "website" {
-  bucket        = "superluminar-hello-world-website-${var.environment}"
+  bucket = "hello-world-website-${data.aws_caller_identity.current.account_id}-${var.environment}"
   force_destroy = true
 }
 

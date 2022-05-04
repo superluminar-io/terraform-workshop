@@ -6,8 +6,10 @@ provider "aws" {
   region = "eu-west-1"
 }
 
+data "aws_caller_identity" "current" {}
+
 resource "aws_s3_bucket" "website" {
-  bucket        = "superluminar-hello-world-website"
+  bucket        = "hello-world-website-${data.aws_caller_identity.current.account_id}"
   force_destroy = true
 }
 
@@ -61,7 +63,7 @@ resource "aws_apigatewayv2_api" "hello_world" {
 
 output "website_url" {
   description = "Static website URL"
-  value = "http://${aws_s3_bucket_website_configuration.website.website_endpoint}"
+  value       = "http://${aws_s3_bucket_website_configuration.website.website_endpoint}"
 }
 
 output "api_url" {
