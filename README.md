@@ -1,17 +1,17 @@
-# Terraform Workshop
+# 🎓 Terraform Workshop
 > Learn infrastructure as code basics w/ Terraform and AWS
-
-## About this workshop 👋
 
 The workshop addresses infrastructure as code and Terraform basics. Learn how to create the first Terraform stack and dpeloy some resources to AWS. We explore best practices and improve the growing code base over time.
 
-- Learn how to setup Terraform
-- Learn how to deploy a simple HTTP API using AWS API Gateway and AWS Lambda
-- Learn how to maintain multiple environments (e.g. staging and prod) with module composition
-- Learn how to manage remote states using AWS S3
-- Learn how to improve a growing codebase with Terragrunt
+## ✨ At a glance
 
-## Prerequisites 👾
+* ✅ Learn how to setup Terraform
+* ✅ Learn how to deploy a simple HTTP API using AWS API Gateway and AWS Lambda
+* ✅ Learn how to maintain multiple environments (e.g. staging and prod) with module composition
+* ✅ Learn how to manage remote states using AWS S3
+* ✅ Learn how to improve a growing codebase with Terragrunt
+
+## 👾 Prerequisites
 
 Before jumping to the first lab, please double-check the list and prepare your computer.
 
@@ -21,7 +21,7 @@ Before jumping to the first lab, please double-check the list and prepare your c
 - IDE with Terraform support (e.g. [VS Code](https://code.visualstudio.com/) / [Terraform extension](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform))
 - [tfenv (recommended)](https://github.com/tfutils/tfenv)
 
-## Labs 🤓
+## 🤓 Labs
 
 We recommend you walk through the labs step by step and follow the instructions. Feel free to further extend the stack, play around with resources and dive deeper. Have fun ✌️
 
@@ -32,6 +32,6 @@ We recommend you walk through the labs step by step and follow the instructions.
 5. [Remote Backend](./5-remote-backend/): Manage Terraform state remotely using AWS S3.
 6. [Terragrunt](./6-terragrunt/): Use Terragrunt to automate the creation of the remote state and clean up the environments.
    
-## License 👩‍⚖️
+## 👩‍⚖️ License
 
 See [LICENSE](./LICENSE.md).
