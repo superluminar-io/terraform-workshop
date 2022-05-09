@@ -9,9 +9,6 @@ module "lambda_function" {
   handler       = "helloworld.handler"
   runtime       = "nodejs12.x"
   source_path   = "${path.module}/functions"
-  environment_variables = {
-    "RESPONSE" = var.lambda_function_response
-  }
 
   publish = true
   allowed_triggers = {
