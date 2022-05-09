@@ -92,11 +92,6 @@ Let's extend the stack and deploy more resources:
       suffix = "index.html"
     }
   }
-
-  output "website_url" {
-    description = "Static website URL"
-    value = "http://${aws_s3_bucket_website_configuration.website.website_endpoint}"
-  }
   ```
 3. Create another file `outputs.tf` next to the `main.tf`. Add the following lines:
   ```tf
@@ -107,7 +102,7 @@ Let's extend the stack and deploy more resources:
   ```
 4. Run `terraform apply` again and confirm with `yes`.
 
-The new resources enable static website hosting and upload the `index.html`. Feel free to go to the S3 console again. You should see the `index.html` file in the bucket.
+The new resources enable static website hosting and upload the `index.html`. Feel free to go to the S3 console again and watch out for the HTML file.
 
 We also introduced an output: Output is very helpful to retrieve certain data after deployment. Go back to the terminal and check the output. You should find something like this: 
 
@@ -121,4 +116,4 @@ Thanks to the output, we can easily find the endpoint of the static website with
 
 ## Next
 
-That's it for the first lab. We learned some Terraform basics (provider, data sources, resources and outputs) and deployed some resources. In the [next lab](../2-modules/), we extend the stack and create a simple API.
+That's it for the first lab. We learned more about the Terraform Language (provider, data sources, resources and outputs) and deployed some AWS resources. In the [next lab](../2-modules/), we extend the stack and use a third-party module.

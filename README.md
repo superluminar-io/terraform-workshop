@@ -1,7 +1,7 @@
 # 🎓 Terraform Workshop
 > Learn infrastructure as code basics w/ Terraform and AWS
 
-The workshop addresses infrastructure as code and Terraform basics. Learn how to create the first Terraform stack and deploy some resources to AWS. We explore best practices and improve the growing codebase over time.
+The workshop empowers you to know the core concepts of *infrastructure as code* by using practical examples in Terraform. Learn how to create the first Terraform stack and deploy some resources to AWS. We explore best practices and improve the growing codebase over time.
 
 ## ✨ At a glance
 

@@ -1,6 +1,6 @@
-# Simple API
+# Modules
 
-In the first lab, we bootstrapped Terraform and created some resources. Finally, we deployed the resources to AWS and got a very basic static website hosting. Pretty cool, huh? Let's extend the stack and add a simple *Hello World API*. We want to use [Amazon API Gateway](https://aws.amazon.com/api-gateway/) and [AWS Lambda](https://aws.amazon.com/lambda/) (with Node.js) for a very basic serverless API returning a hello world statement.
+In the first lab, we bootstrapped Terraform and got familiar with the very basics. Let's extend the stack and add a simple *Hello World API*. We want to use [Amazon API Gateway](https://aws.amazon.com/api-gateway/) and [AWS Lambda](https://aws.amazon.com/lambda/) (with Node.js) for a serverless API returning a hello world statement.
 
 ## Lambda function
 
@@ -64,9 +64,13 @@ In the first lab, we bootstrapped Terraform and created some resources. Finally,
   }
   ```
 
-We used a [module](https://www.terraform.io/language/modules/develop) for the first time. A *module* is a container for multiple resources. We use a third-party library called [*terraform-aws-modules/lambda/aws*](https://registry.terraform.io/modules/terraform-aws-modules/lambda/aws/latest) to describe a Lambda function. Essentially, the library does the heavy lifting for us. It bundles the function source code and uploads it to the public cloud. We could also use plain AWS resources and create the process by ourselves, but that's not good advice. Before reinventing the wheel, we should check for open-source modules already available. The [Terraform Registry](https://registry.terraform.io/) is a good starting point to find the right library.
+So far, we used *resources* to describe AWS infrastructure. Think of it as a low-level component to describe one specific entity in AWS (like an IAM user or an S3 bucket). Sometimes we have a combination of resources widely used we would like to bundle into an abstraction layer. That's where modules come in.
 
-So, the Lambda function is in place and we can go to the next component: The API Gateway sitting in front of the Lambda function and processing HTTP(S) requests.
+The good part is, that we can write our own modules or use third-party modules. In this case, we used a third-party module called [*terraform-aws-modules/lambda/aws*](https://registry.terraform.io/modules/terraform-aws-modules/lambda/aws/latest). So instead of wiring up many resources by ourselves to deploy a simple Lambda function, we can just use the module. It bundles the source code and handles the IAM policies in the background.
+
+The Terraform community is very vibrant and you can find thousands of modules. Before reinventing the wheel, check out the [Terraform Registry](https://registry.terraform.io).
+
+That's it for the Lambda function. Let's go to the API Gateway.
 
 ## API Gateway
 
@@ -145,4 +149,4 @@ Okay, nothing really special here. We extended the stack and introduced more res
 
 ## Next
 
-The [next lab](../3-composition/) covers a very important topic: Instead of just deploying the stack once, we want to deploy the stack for multiple environments. Imagine, we want to have a staging and production environment, probably with slightly different configurations.
+The [next lab](../3-composition/) covers a very important topic: Instead of just deploying the stack once, we want to deploy the stack for multiple environments (e.g. staging and prod). Along the way, we discuss module composition and code splitting.
