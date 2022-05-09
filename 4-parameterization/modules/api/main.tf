@@ -10,7 +10,7 @@ module "lambda_function" {
   runtime       = "nodejs14.x"
   source_path   = "${path.module}/functions"
   environment_variables = {
-    GREETING_ENABLED = "${var.enabled_greeting_feature}"
+    GREETING_ENABLED = "${var.enable_greeting_feature}"
   }
 
   publish = true

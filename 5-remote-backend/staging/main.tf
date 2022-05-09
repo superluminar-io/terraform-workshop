@@ -20,6 +20,6 @@ module "website" {
 module "api" {
   source = "../modules/api"
 
-  environment              = "staging"
-  enabled_greeting_feature = true
+  environment             = "staging"
+  enable_greeting_feature = true
 }
