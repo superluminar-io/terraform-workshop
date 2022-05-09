@@ -34,11 +34,8 @@ module "lambda_function" {
 
   function_name = "hello-world"
   handler       = "helloworld.handler"
-  runtime       = "nodejs12.x"
+  runtime       = "nodejs14.x"
   source_path   = "./functions"
-  environment_variables = {
-    "RESPONSE" = "Hello from Lambda! 👋"
-  }
 
   publish = true
   allowed_triggers = {

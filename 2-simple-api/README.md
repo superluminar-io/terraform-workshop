@@ -9,7 +9,9 @@ In the first lab, we bootstrapped Terraform and created some resources. Finally,
 3. Add the following lines to the JS file:
   ```js
   exports.handler = async () => {
-    return { "message": process.env.RESPONSE };
+    return { 
+      message: "Hello from Lambda! 👋"
+    };
   };
   ```
 4. Now, go back to the `main.tf` file and replace it:
@@ -50,11 +52,8 @@ In the first lab, we bootstrapped Terraform and created some resources. Finally,
 
     function_name = "hello-world"
     handler       = "helloworld.handler"
-    runtime       = "nodejs12.x"
+    runtime       = "nodejs14.x"
     source_path   = "./functions"
-    environment_variables = {
-      "RESPONSE" = "Hello from Lambda! 👋"
-    }
   }
   ```
 5. Run `terraform init`, then `terraform apply`, and confirm the changes with `yes`.
@@ -109,11 +108,8 @@ So, the Lambda function is in place and we can go to the next component: The API
 
     function_name = "hello-world"
     handler       = "helloworld.handler"
-    runtime       = "nodejs12.x"
+    runtime       = "nodejs14.x"
     source_path   = "./functions"
-    environment_variables = {
-      "RESPONSE" = "Hello from Lambda! 👋"
-    }
 
     publish = true
     allowed_triggers = {

@@ -1,3 +1,5 @@
 exports.handler = async () => {
-  return { "message": process.env.RESPONSE };
+  return { 
+    message: "Hello from Lambda! 👋"
+  };
 };

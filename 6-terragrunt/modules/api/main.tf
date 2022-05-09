@@ -9,6 +9,9 @@ module "lambda_function" {
   handler       = "helloworld.handler"
   runtime       = "nodejs14.x"
   source_path   = "${path.module}/functions"
+  environment_variables = {
+    GREETING_ENABLED = "${var.enable_greeting}"
+  }
 
   publish = true
   allowed_triggers = {
