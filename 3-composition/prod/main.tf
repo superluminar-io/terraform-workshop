@@ -15,6 +15,5 @@ module "website" {
 module "api" {
   source = "../modules/api"
   
-  lambda_function_response = "Hello from Prod 👋"
   environment = "prod"
 }
