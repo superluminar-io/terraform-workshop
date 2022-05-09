@@ -34,7 +34,7 @@ module "lambda_function" {
 
   function_name = "hello-world"
   handler       = "helloworld.handler"
-  runtime       = "nodejs12.x"
+  runtime       = "nodejs14.x"
   source_path   = "./functions"
 
   publish = true

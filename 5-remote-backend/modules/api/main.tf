@@ -7,8 +7,11 @@ module "lambda_function" {
 
   function_name = "${local.project_name}-${var.environment}"
   handler       = "helloworld.handler"
-  runtime       = "nodejs12.x"
+  runtime       = "nodejs14.x"
   source_path   = "${path.module}/functions"
+  environment_variables = {
+    GREETING_ENABLED = "${var.enable_greeting}"
+  }
 
   publish = true
   allowed_triggers = {

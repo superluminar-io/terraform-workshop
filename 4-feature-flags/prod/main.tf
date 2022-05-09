@@ -8,13 +8,12 @@ provider "aws" {
 
 module "website" {
   source = "../modules/website"
-  
+
   environment = "prod"
 }
 
 module "api" {
   source = "../modules/api"
-  
-  lambda_function_response = "Hello from Prod 👋"
+
   environment = "prod"
 }

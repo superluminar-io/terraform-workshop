@@ -52,7 +52,7 @@ In the first lab, we bootstrapped Terraform and created some resources. Finally,
 
     function_name = "hello-world"
     handler       = "helloworld.handler"
-    runtime       = "nodejs12.x"
+    runtime       = "nodejs14.x"
     source_path   = "./functions"
   }
   ```
@@ -108,7 +108,7 @@ So, the Lambda function is in place and we can go to the next component: The API
 
     function_name = "hello-world"
     handler       = "helloworld.handler"
-    runtime       = "nodejs12.x"
+    runtime       = "nodejs14.x"
     source_path   = "./functions"
 
     publish = true

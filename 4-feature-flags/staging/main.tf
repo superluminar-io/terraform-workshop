@@ -8,13 +8,13 @@ provider "aws" {
 
 module "website" {
   source = "../modules/website"
-  
+
   environment = "staging"
 }
 
 module "api" {
   source = "../modules/api"
-  
-  lambda_function_response = "Hello from Staging 👋"
+
   environment = "staging"
+  enable_greeting = true
 }

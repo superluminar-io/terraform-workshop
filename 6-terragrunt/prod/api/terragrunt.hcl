@@ -7,6 +7,5 @@ terraform {
 }
 
 inputs = {
-  lambda_function_response = "Hello from Prod 👋"
   environment = "prod"
 }

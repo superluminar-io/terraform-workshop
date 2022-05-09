@@ -7,7 +7,7 @@ module "lambda_function" {
 
   function_name = "${local.project_name}-${var.environment}"
   handler       = "helloworld.handler"
-  runtime       = "nodejs12.x"
+  runtime       = "nodejs14.x"
   source_path   = "${path.module}/functions"
 
   publish = true

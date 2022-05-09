@@ -7,6 +7,6 @@ terraform {
 }
 
 inputs = {
-  lambda_function_response = "Hello from Staging 👋"
   environment = "staging"
+  enable_greeting = true
 }
