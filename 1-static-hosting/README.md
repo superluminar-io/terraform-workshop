@@ -1,6 +1,6 @@
 # Static Hosting
 
-Welcome to the first lab! 🥳 Let's get started by bootstrapping Terraform and deploying some resources to AWS. Instead of just deploying some random resources, we want to create a S3 bucket and enable static website hosting. Ultimately, we serve a static HTML file.
+Welcome to the first lab! 🥳 Let's get started by bootstrapping Terraform and deploying some resources to AWS. Instead of just deploying some random resources, we want to create an S3 bucket and enable static website hosting. Ultimately, we serve a static HTML file.
   
 ## Bootstrap Terraform
 
@@ -38,11 +38,11 @@ Welcome to the first lab! 🥳 Let's get started by bootstrapping Terraform and 
 
 We just created an empty S3 bucket. Go to the [S3 console](https://s3.console.aws.amazon.com/s3/buckets) and verify the existence. 
 
-What's going on here? We created a simple `.tf` file: Terraform comes with its own syntax called [HCL](https://www.terraform.io/language/syntax/configuration). In the `main.tf` file, we set the required Terraform version. After that, we configure a provider. Throughout the workshop, we focus on AWS and only deploy AWS resources. The [AWS provider](https://www.terraform.io/language/providers) gives us all the resources and data sources we need to interact with AWS.
+What's going on here? We created a simple `.tf` file: Terraform comes with its syntax called [HCL](https://www.terraform.io/language/syntax/configuration). In the `main.tf` file, we set the required Terraform version. After that, we configure a provider. Throughout the workshop, we focus on AWS and only deploy AWS resources. The [AWS provider](https://www.terraform.io/language/providers) gives us all the resources and data sources we need to interact with AWS.
 
 Bare in mind, that Terraform provides [dozens of providers](https://registry.terraform.io/browse/providers) (e.g. Azure, Google Cloud Plaform or even Auth0).
 
-Now, after the provider we have a data source and a resource. The resource block describes a simple S3 bucket. The configuration arguments (between `{` and `}`) describe the resource furthermore. S3 buckets always need an unique bucket name. To achieve this, we get the current AWS account id and append it to the bucket name. We get the AWS account id by using the `aws_caller_identity` data source. With data sources, we can fetch data outside of the Terraform stack and use it for resources.
+Now, after the provider, we have a data source and a resource. The resource block describes a simple S3 bucket. The configuration arguments (between `{` and `}`) describe the resource furthermore. S3 buckets always need a unique bucket name. To achieve this, we get the current AWS account id and append it to the bucket name. We get the AWS account id by using the `aws_caller_identity` data source. With data sources, we can fetch data outside of the Terraform stack and use it for resources.
 
 Finally, we run `terraform apply` to deploy the resources.
 
@@ -98,7 +98,14 @@ Let's extend the stack and deploy more resources:
     value = "http://${aws_s3_bucket_website_configuration.website.website_endpoint}"
   }
   ```
-3. Run `terraform apply` again and confirm with `yes`.
+3. Create another file `outputs.tf` next to the `main.tf`. Add the following lines:
+  ```tf
+  output "website_url" {
+    description = "Static website URL"
+    value = "http://${aws_s3_bucket_website_configuration.website.website_endpoint}"
+  }
+  ```
+4. Run `terraform apply` again and confirm with `yes`.
 
 The new resources enable static website hosting and upload the `index.html`. Feel free to go to the S3 console again. You should see the `index.html` file in the bucket.
 

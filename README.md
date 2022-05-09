@@ -1,7 +1,7 @@
 # 🎓 Terraform Workshop
 > Learn infrastructure as code basics w/ Terraform and AWS
 
-The workshop addresses infrastructure as code and Terraform basics. Learn how to create the first Terraform stack and dpeloy some resources to AWS. We explore best practices and improve the growing code base over time.
+The workshop addresses infrastructure as code and Terraform basics. Learn how to create the first Terraform stack and deploy some resources to AWS. We explore best practices and improve the growing codebase over time.
 
 ## ✨ At a glance
 
@@ -27,11 +27,14 @@ We recommend you walk through the labs step by step and follow the instructions.
 
 1. [Static Hosting](./1-static-hosting): Get started with Terraform and deploy the first AWS resources
 2. [Simple API](./2-simple-api/): Extend the codebase and create a simple HTTP API using AWS API Gateway and AWS Lambda
-3. [Code Structure](./3-code-structure/): Refactor the codebase and learn more about naming conventions and commong code structures.
-4. [Environments](./4-environments/): Extend the codebase and prepare everything for multiple environments (e.g. staging and prod). Learn more about modules.
-5. [Remote Backend](./5-remote-backend/): Manage Terraform state remotely using AWS S3.
-6. [Terragrunt](./6-terragrunt/): Use Terragrunt to automate the creation of the remote state and clean up the environments.
-   
+3. [Environments](./3-environments/): Extend the codebase and prepare everything for multiple environments (e.g. staging and prod). Learn more about modules.
+4. [Remote Backend](./4-remote-backend/): Manage Terraform state remotely using AWS S3.
+5. [Terragrunt](./5-terragrunt/): Use Terragrunt to automate the creation of the remote state and clean up the environments.
+
+## 📖 Further Reading
+
+- Best practices for [code structure](https://www.terraform-best-practices.com/code-structure) and [naming conventions](https://www.terraform-best-practices.com/naming)
+
 ## 👩‍⚖️ License
 
 See [LICENSE](./LICENSE.md).

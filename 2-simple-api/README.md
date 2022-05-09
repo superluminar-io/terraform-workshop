@@ -45,12 +45,6 @@ In the first lab, we bootstrapped Terraform and created some resources. Finally,
     }
   }
 
-  variable "lambda_function_response" {
-    type        = string
-    description = "Body response of the hello world lambda function"
-    default     = "Hello from Lambda!"
-  }
-
   module "lambda_function" {
     source = "terraform-aws-modules/lambda/aws"
 
@@ -59,23 +53,21 @@ In the first lab, we bootstrapped Terraform and created some resources. Finally,
     runtime       = "nodejs12.x"
     source_path   = "./functions"
     environment_variables = {
-      "RESPONSE" = var.lambda_function_response
+      "RESPONSE" = "Hello from Lambda! 👋"
     }
   }
   ```
-5. Run `terraform init`, then `terraform apply` and confirm the changes with `yes`.
+5. Run `terraform init`, then `terraform apply`, and confirm the changes with `yes`.
 6. Go to the [Lambda console](https://eu-west-1.console.aws.amazon.com/lambda/home?region=eu-west-1#/functions/hello-world?tab=testing). You should see the deployed Lambda function. Now, scroll down a little bit and click on the `Test` button. Click on `Details`. You should see the output of the Lambda function:
   ```json
   {
-    "message": "Hello from Lambda!"
+    "message": "Hello from Lambda! 👋"
   }
   ```
 
-It's worth noting that we use environment variables to pass certain data to the Lambda function. The Terraform [input variable](https://www.terraform.io/language/values/variables) sets the response of the Lambda function. Feel free to play around with the default value and deploy the stack again. You should retrieve the new Lambda function response.
+We used a [module](https://www.terraform.io/language/modules/develop) for the first time. A *module* is a container for multiple resources. We use a third-party library called [*terraform-aws-modules/lambda/aws*](https://registry.terraform.io/modules/terraform-aws-modules/lambda/aws/latest) to describe a Lambda function. Essentially, the library does the heavy lifting for us. It bundles the function source code and uploads it to the public cloud. We could also use plain AWS resources and create the process by ourselves, but that's not good advice. Before reinventing the wheel, we should check for open-source modules already available. The [Terraform Registry](https://registry.terraform.io/) is a good starting point to find the right library.
 
-In addition, we also use a [module](https://www.terraform.io/language/modules/develop) for the first time. A *module* is a container for multiple resources. We use a third-party library called [*terraform-aws-modules/lambda/aws*](https://registry.terraform.io/modules/terraform-aws-modules/lambda/aws/latest) to describe a Lambda function. Essentially, the library does the heavy lifting for us. It bundles the function source code and uploads it to the public cloud. We could also use plain AWS resources and create the process by ourselves, but that's not good advice. Before reinventing the wheel, we should check for open-source modules already available. The [Terraform Registry](https://registry.terraform.io/) is a good starting point to find the right library.
-
-So, the Lambda function is in place and we can go to the next component. The API Gateway sitting in front of the Lambda function and processing HTTP(S) requests.
+So, the Lambda function is in place and we can go to the next component: The API Gateway sitting in front of the Lambda function and processing HTTP(S) requests.
 
 ## API Gateway
 
@@ -112,12 +104,6 @@ So, the Lambda function is in place and we can go to the next component. The API
     }
   }
 
-  variable "lambda_function_response" {
-    type        = string
-    description = "Body response of the hello world lambda function"
-    default     = "Hello from Lambda!"
-  }
-
   module "lambda_function" {
     source = "terraform-aws-modules/lambda/aws"
 
@@ -126,7 +112,7 @@ So, the Lambda function is in place and we can go to the next component. The API
     runtime       = "nodejs12.x"
     source_path   = "./functions"
     environment_variables = {
-      "RESPONSE" = var.lambda_function_response
+      "RESPONSE" = "Hello from Lambda! 👋"
     }
 
     publish = true
@@ -143,7 +129,9 @@ So, the Lambda function is in place and we can go to the next component. The API
     protocol_type = "HTTP"
     target        = module.lambda_function.lambda_function_arn
   }
-
+  ```
+2. Replace the `outputs.tf` file:
+  ```tf
   output "website_url" {
     description = "Static website URL"
     value       = "http://${aws_s3_bucket_website_configuration.website.website_endpoint}"
@@ -161,4 +149,4 @@ Okay, nothing really special here. We extended the stack and introduced more res
 
 ## Next
 
-The Terraform file is already growing and growing. Let's talk about some naming conventions and code structure best practices [in the next lab](../3-code-structure/).
+The [next lab](../3-environments/) covers a very important topic: Instead of just deploying the stack once, we want to deploy the stack for multiple environments. Imagine, we want to have a staging and production environment, probably with slightly different configurations.
