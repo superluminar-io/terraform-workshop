@@ -145,4 +145,4 @@ Okay, nothing really special here. We extended the stack and introduced more res
 
 ## Next
 
-The [next lab](../3-environments/) covers a very important topic: Instead of just deploying the stack once, we want to deploy the stack for multiple environments. Imagine, we want to have a staging and production environment, probably with slightly different configurations.
+The [next lab](../3-composition/) covers a very important topic: Instead of just deploying the stack once, we want to deploy the stack for multiple environments. Imagine, we want to have a staging and production environment, probably with slightly different configurations.

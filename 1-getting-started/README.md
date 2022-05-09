@@ -1,4 +1,4 @@
-# Static Hosting
+# Getting started
 
 Welcome to the first lab! 🥳 Let's get started by bootstrapping Terraform and deploying some resources to AWS. Instead of just deploying some random resources, we want to create an S3 bucket and enable static website hosting. Ultimately, we serve a static HTML file.
   
@@ -121,4 +121,4 @@ Thanks to the output, we can easily find the endpoint of the static website with
 
 ## Next
 
-That's it for the first lab. We learned some Terraform basics (provider, data sources, resources and outputs) and deployed some resources. In the [next lab](../2-simple-api/), we extend the stack and create a simple API.
+That's it for the first lab. We learned some Terraform basics (provider, data sources, resources and outputs) and deployed some resources. In the [next lab](../2-modules/), we extend the stack and create a simple API.
