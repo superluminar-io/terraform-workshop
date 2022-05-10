@@ -34,6 +34,10 @@ We recommend you walk through the labs step by step and follow the instructions.
 ## 📖 Further Reading
 
 - Best practices for [code structure](https://www.terraform-best-practices.com/code-structure) and [naming conventions](https://www.terraform-best-practices.com/naming)
+- [Testing Terraform modules and configurations](https://www.hashicorp.com/blog/testing-hashicorp-terraform)
+- [Static analysis of the Terraform code using tfsec](https://github.com/aquasecurity/tfsec)
+- [Awesome Terraform: Curated list of resources on Terraform](https://github.com/shuaibiyy/awesome-terraform)
+- [DRY improvements using Terragrunt (Advanced)](https://terragrunt.gruntwork.io/docs/getting-started/quick-start/)
 
 ## 👩‍⚖️ License
 
