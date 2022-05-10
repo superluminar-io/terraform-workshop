@@ -35,4 +35,4 @@ We recommend you walk through the labs step by step and follow the instructions.
 
 ## 👩‍⚖️ License
 
-See [LICENSE](./LICENSE.md).
+See [LICENSE](./LICENSE).
