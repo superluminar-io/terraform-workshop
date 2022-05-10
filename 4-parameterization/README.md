@@ -75,6 +75,11 @@ The new feature wouldn't appear after deployment (feel free to try it and deploy
   ```tf
   terraform {
     required_version = "~> 1.1.7"
+
+    backend "s3" {
+      key    = "staging/terraform.tfstate"
+      region = "eu-west-1"
+    }
   }
 
   provider "aws" {
@@ -107,6 +112,8 @@ The new feature wouldn't appear after deployment (feel free to try it and deploy
 
 With input variables, we can make modules configurable for different scenarios. In this case, we only want to deploy a new feature to the staging environment, but not to production. In practice, it's a common requirement to configure environments differently. For example, we want to configure provisioned capacities (like CPU or memory allocation), a global CDN or custom domains with SSL certificates.
 
-## Next
+## Final words
 
-In the [next lab](../5-remote-backend/), we need to talk about another core concept of Terraform: The State.
+Well, that was the last lab for the Terraform workshop. We hope you enjoyed the workshop. If you want to learn more about Terraform and dive deeper, take a look at the [reading list](../README.md#📖-further-reading).
+
+Cheers ✌️
