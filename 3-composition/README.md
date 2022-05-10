@@ -4,25 +4,26 @@ The previous lab introduced a third-party module to easily deploy a Lambda funct
 
 ## Custom Modules
 
-1. Create new folders:
+1. Before we start with the refactoring, make sure you deleted the existing stack by running `terraform destroy`. Confirm the command with `yes`.
+2. Create new folders:
   ```sh
   mkdir modules
   mkdir modules/api
   mkdir modules/website
   ```
-2. Move the `functions` folder inside the `modules/api` folder:
+3. Move the `functions` folder inside the `modules/api` folder:
   ```sh
   mv functions modules/api
   ```
-3. Move the `index.html` file inside the `modules/website` folder:
+4. Move the `index.html` file inside the `modules/website` folder:
   ```sh
   mv index.html modules/website
   ```
-4. Create a `main.tf` file inside the `modules/api` folder:
+5. Create a `main.tf` file inside the `modules/api` folder:
   ```sh
   touch modules/api/main.tf
   ```
-5. Add the following lines to the file:
+6. Add the following lines to the file:
   ```tf
   locals {
     project_name = "hello-world"
@@ -51,33 +52,33 @@ The previous lab introduced a third-party module to easily deploy a Lambda funct
     target        = module.lambda_function.lambda_function_arn
   }
   ```
-6. Create a `outputs.tf` file inside the `modules/api` folder:
+7. Create a `outputs.tf` file inside the `modules/api` folder:
   ```sh
   touch modules/api/outputs.tf
   ```
-7. Add the following lines to the file:
+8. Add the following lines to the file:
   ```sh
   output "url" {
     description = "Hello World API URL"
     value       = aws_apigatewayv2_api.hello_world.api_endpoint
   }
   ```
-8. Create a `variables.tf` file inside the `modules/api` folder:
+9. Create a `variables.tf` file inside the `modules/api` folder:
   ```sh
   touch modules/api/variables.tf
   ```
-9. Add the following lines to the file:
+10. Add the following lines to the file:
   ```tf
   variable "environment" {
     type = string
     description = "Identifier for the environment (e.g. staging, development or prod)"
   }
   ```
-10. Create a `main.tf` file inside the `modules/website` folder:
+11. Create a `main.tf` file inside the `modules/website` folder:
   ```sh
   touch modules/website/main.tf
   ```
-11. Add the following lines to the file:
+12. Add the following lines to the file:
   ```tf
   data "aws_caller_identity" "current" {}
 
@@ -102,29 +103,29 @@ The previous lab introduced a third-party module to easily deploy a Lambda funct
     }
   }
   ```
-12. Create a `outputs.tf` file inside the `modules/website` folder:
+13. Create a `outputs.tf` file inside the `modules/website` folder:
   ```sh
   touch modules/website/outputs.tf
   ```
-13. Add the following lines to the file:
+14. Add the following lines to the file:
   ```sh
   output "url" {
     description = "Hello World Website URL"
     value       = "http://${aws_s3_bucket_website_configuration.website.website_endpoint}"
   }
   ```
-8. Create a `variables.tf` file inside the `modules/website` folder:
+15. Create a `variables.tf` file inside the `modules/website` folder:
   ```sh
   touch modules/website/variables.tf
   ```
-9. Add the following lines to the file:
+16. Add the following lines to the file:
   ```tf
   variable "environment" {
     type = string
     description = "Identifier for the environment (e.g. staging, development or prod)"
   }
   ```
-10. Delete old files/folders on the root level:
+17. Delete old files/folders on the root level:
   ```sh
   rm main.ts outputs.tf .terraform.lock.hcl
   rm -rf .terraform builds
