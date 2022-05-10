@@ -40,7 +40,7 @@ We just created an empty S3 bucket. Go to the [S3 console](https://s3.console.aw
 
 What's going on here? We created a simple `.tf` file: Terraform comes with its syntax called [HCL](https://www.terraform.io/language/syntax/configuration). In the `main.tf` file, we set the required Terraform version. After that, we configure a provider. Throughout the workshop, we focus on AWS and only deploy AWS resources. The [AWS provider](https://www.terraform.io/language/providers) gives us all the resources and data sources we need to interact with AWS.
 
-Bare in mind, that Terraform provides [dozens of providers](https://registry.terraform.io/browse/providers) (e.g. Azure, Google Cloud Plaform or even Auth0).
+Bare in mind, that Terraform provides [dozens of providers](https://registry.terraform.io/browse/providers) (e.g. Azure, Google Cloud Platform or even Auth0).
 
 Now, after the provider, we have a data source and a resource. The resource block describes a simple S3 bucket. The configuration arguments (between `{` and `}`) describe the resource furthermore. S3 buckets always need a unique bucket name. To achieve this, we get the current AWS account id and append it to the bucket name. We get the AWS account id by using the `aws_caller_identity` data source. With data sources, we can fetch data outside of the Terraform stack and use it for resources.
 
