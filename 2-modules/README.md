@@ -18,6 +18,11 @@ In the first lab, we bootstrapped Terraform and got familiar with the very basic
   ```tf
   terraform {
     required_version = "~> 1.1.7"
+
+    backend "s3" {
+      key    = "terraform.tfstate"
+      region = "eu-west-1"
+    }
   }
 
   provider "aws" {
@@ -78,6 +83,11 @@ That's it for the Lambda function. Let's go to the API Gateway.
   ```tf
   terraform {
     required_version = "~> 1.1.7"
+
+    backend "s3" {
+      key    = "terraform.tfstate"
+      region = "eu-west-1"
+    }
   }
 
   provider "aws" {
