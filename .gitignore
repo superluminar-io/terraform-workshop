@@ -8,6 +8,3 @@ terraform.tfvars
 
 # Lambda Function Builds
 builds
-
-# Terragrunt (auto-generated)
-.terragrunt-cache
