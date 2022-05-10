@@ -9,15 +9,15 @@ provider "aws" {
 data "aws_caller_identity" "current" {}
 
 resource "aws_s3_bucket" "website" {
-  bucket = "hello-world-website-${data.aws_caller_identity.current.account_id}"
+  bucket        = "hello-world-website-${data.aws_caller_identity.current.account_id}"
   force_destroy = true
 }
 
 resource "aws_s3_object" "startpage" {
-  bucket = aws_s3_bucket.website.id
-  key    = "index.html"
-  source = "index.html"
-  acl = "public-read"
+  bucket       = aws_s3_bucket.website.id
+  key          = "index.html"
+  source       = "index.html"
+  acl          = "public-read"
   content_type = "text/html"
 }
 

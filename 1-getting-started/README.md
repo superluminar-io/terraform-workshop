@@ -17,7 +17,7 @@ Let's get started by bootstrapping Terraform and deploying some resources to AWS
   }
   ```
 3. Run `terraform init`
-4. Add the first resource:
+4. Replace the `main.tf` file by adding the first resource:
   ```tf
   terraform {
     required_version = "~> 1.1.7"
@@ -30,7 +30,7 @@ Let's get started by bootstrapping Terraform and deploying some resources to AWS
   data "aws_caller_identity" "current" {}
 
   resource "aws_s3_bucket" "website" {
-    bucket = "hello-world-website-${data.aws_caller_identity.current.account_id}"
+    bucket        = "hello-world-website-${data.aws_caller_identity.current.account_id}"
     force_destroy = true
   }
   ```
@@ -38,7 +38,7 @@ Let's get started by bootstrapping Terraform and deploying some resources to AWS
 
 We just created an empty S3 bucket. Go to the [S3 console](https://s3.console.aws.amazon.com/s3/buckets) and verify the existence. 
 
-What's going on here? We created a simple `.tf` file: Terraform comes with its syntax called [HCL](https://www.terraform.io/language/syntax/configuration). In the `main.tf` file, we set the required Terraform version. After that, we configure a provider. Throughout the workshop, we focus on AWS and only deploy AWS resources. The [AWS provider](https://www.terraform.io/language/providers) gives us all the resources and data sources we need to interact with AWS.
+What's going on here? We created a `.tf` file: Terraform comes with its syntax called [HCL](https://www.terraform.io/language/syntax/configuration). In the `main.tf` file, we set the required Terraform version. After that, we configure a provider. Throughout the workshop, we focus on AWS and only deploy AWS resources. The [AWS provider](https://www.terraform.io/language/providers) gives us all the resources and data sources we need to describe AWS infrastructure.
 
 Bare in mind, that Terraform provides [dozens of providers](https://registry.terraform.io/browse/providers) (e.g. Azure, Google Cloud Platform or even Auth0).
 
@@ -73,15 +73,15 @@ Let's extend the stack and deploy more resources:
   data "aws_caller_identity" "current" {}
 
   resource "aws_s3_bucket" "website" {
-    bucket = "hello-world-website-${data.aws_caller_identity.current.account_id}"
+    bucket        = "hello-world-website-${data.aws_caller_identity.current.account_id}"
     force_destroy = true
   }
 
   resource "aws_s3_object" "startpage" {
-    bucket = aws_s3_bucket.website.id
-    key    = "index.html"
-    source = "index.html"
-    acl = "public-read"
+    bucket       = aws_s3_bucket.website.id
+    key          = "index.html"
+    source       = "index.html"
+    acl          = "public-read"
     content_type = "text/html"
   }
 
@@ -97,12 +97,12 @@ Let's extend the stack and deploy more resources:
   ```tf
   output "website_url" {
     description = "Static website URL"
-    value = "http://${aws_s3_bucket_website_configuration.website.website_endpoint}"
+    value       = "http://${aws_s3_bucket_website_configuration.website.website_endpoint}"
   }
   ```
 4. Run `terraform apply` again and confirm with `yes`.
 
-The new resources enable static website hosting and upload the `index.html`. Feel free to go to the S3 console again and watch out for the HTML file.
+The new resources enable static website hosting and upload the `index.html` file. Feel free to go to the S3 console again and watch out for the HTML file.
 
 We also introduced an output: Output is very helpful to retrieve certain data after deployment. Go back to the terminal and check the output. You should find something like this: 
 
@@ -112,7 +112,7 @@ Outputs:
 website_url = "http://hello-world-website-XXXXXXXXXXX.s3-website-eu-west-1.amazonaws.com"
 ```
 
-Thanks to the output, we can easily find the endpoint of the static website without navigating to the AWS management console. In addition, the output might be also interesting for automation (e.g. get the URL to run integration tests etc.).
+Thanks to the output, we can easily find the endpoint of the static website without navigating to the AWS Management Console. In addition, the output might be also interesting for automation (e.g. get the URL to run integration tests etc.).
 
 ## Remote Backend
 
@@ -120,7 +120,7 @@ Before we continue and go to the next lab, we need to talk about the Terraform s
 
 Until now, we used local files for the Terraform state. That's okay for a workshop but doesn't work for production workloads. The problem is, that we always need the state to apply changes. So if you want to work on the same stack with a team or some form of automation, then you need to share the state with others. The recommended solution is a remote backend. In this workshop, we focus on an S3 bucket, but you have [different options](https://www.terraform.io/language/settings/backends). Instead of keeping the state locally, we upload the state to the S3 bucket and read the current status from there.
 
-1. Create a new S3 bucket in the [AWS management console](https://s3.console.aws.amazon.com/s3/bucket/create?region=eu-west-1). Copy the name of the bucket afterward.
+1. Create a new S3 bucket in the [AWS Management Console](https://s3.console.aws.amazon.com/s3/bucket/create?region=eu-west-1). Copy the name of the bucket afterward.
 2. Go to the file `main.tf` and replace it:
   ```tf
   terraform {
@@ -139,15 +139,15 @@ Until now, we used local files for the Terraform state. That's okay for a worksh
   data "aws_caller_identity" "current" {}
 
   resource "aws_s3_bucket" "website" {
-    bucket = "hello-world-website-${data.aws_caller_identity.current.account_id}"
+    bucket        = "hello-world-website-${data.aws_caller_identity.current.account_id}"
     force_destroy = true
   }
 
   resource "aws_s3_object" "startpage" {
-    bucket = aws_s3_bucket.website.id
-    key    = "index.html"
-    source = "index.html"
-    acl = "public-read"
+    bucket       = aws_s3_bucket.website.id
+    key          = "index.html"
+    source       = "index.html"
+    acl          = "public-read"
     content_type = "text/html"
   }
 
@@ -159,12 +159,12 @@ Until now, we used local files for the Terraform state. That's okay for a worksh
     }
   }
   ```
-3. Run `terraform init`. The command asks for the bucket name. 
+3. Run `terraform init`. The command asks for the bucket name. Answer the question **Do you want to copy existing state to the new backend?** with **yes**.
 4. Run `terraform apply`. Everything should still work.
 
-Go to the S3 bucket in the AWS management console and check out the files. You should see a new file in the bucket. It's still the same file like the one we had locally, but now in the cloud. Terraform takes care of updating the Terraform state automatically.
+Go to the S3 bucket in the AWS Management Console and check out the files. You should see a new file in the bucket. It's still the same file like the one we had locally, but now in the cloud. Terraform takes care of updating the Terraform state automatically.
 
-**Note:** This is a very basic setup for a remote backend. For a full-blown example, please see the [documentation](https://www.terraform.io/language/settings/backends/s3).
+You might have noticed the manual creation of the S3 bucket. To keep it simple for the sake of the workshop, we create the bucket directly in the AWS Management Console. It's a classic chicken and egg situation because we would like to use *infrastructure as code* to create the bucket for the remote backend as well, but therefore we need also a Terraform state. Though workarounds and solutions exist, but we won't cover them here.
 
 ## Next
 
