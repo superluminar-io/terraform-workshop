@@ -24,11 +24,10 @@ Before jumping to the first lab, please double-check the list and prepare your c
 
 We recommend you walk through the labs step by step and follow the instructions. Feel free to further extend the stack, play around with resources and dive deeper. Have fun ✌️
 
-1. [Getting started](./1-getting-started): Get started with Terraform and deploy the first AWS resources
+1. [Getting started](./1-getting-started): Get started with Terraform, deploy some AWS resources, and create a remote backend for the Terraform state
 2. [Modules](./2-modules/): Learn more about *modules* by deploying a simple AWS Lambda function
 3. [Composition](./3-composition/): Refactor the codebase by creating modules and preparing everything for a multi-environment setup (e.g. staging and prod)
 4. [Parameterization](./4-parameterization/): Extend the API by introducing a new feature and enable it only on staging
-5. [Remote Backend](./5-remote-backend/): Manage Terraform state remotely using AWS S3
 
 ## 📖 Further Reading
 

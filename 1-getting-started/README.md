@@ -1,6 +1,6 @@
 # Getting started
 
-Welcome to the first lab! 🥳 Let's get started by bootstrapping Terraform and deploying some resources to AWS. Instead of just deploying some random resources, we want to create an S3 bucket and enable static website hosting. Ultimately, we serve a static HTML file.
+Let's get started by bootstrapping Terraform and deploying some resources to AWS. Instead of just deploying some random resources, we want to create an S3 bucket and enable static website hosting. Ultimately, we serve a static HTML file.
   
 ## Bootstrap Terraform
 
@@ -46,7 +46,7 @@ Now, after the provider, we have a data source and a resource. The resource bloc
 
 Finally, we run `terraform apply` to deploy the resources.
 
-## Static hosting
+## Outputs
 
 Let's extend the stack and deploy more resources:
 
@@ -113,6 +113,58 @@ website_url = "http://hello-world-website-XXXXXXXXXXX.s3-website-eu-west-1.amazo
 ```
 
 Thanks to the output, we can easily find the endpoint of the static website without navigating to the AWS management console. In addition, the output might be also interesting for automation (e.g. get the URL to run integration tests etc.).
+
+## Remote Backend
+
+Before we continue and go to the next lab, we need to talk about the Terraform state. As we apply changes, Terraform is always smart enough to update the AWS resources. How does it work? You might have noticed the auto-generated files `terraform.tfstate` and `terraform.tfstate.backup`. Terraform persists every single state of every AWS resource in the Terraform state. When applying a new update, Terraform compares the desired state with the current state and calculates a diff. Based on the diff, Terraform updates the AWS resources and also updates the state afterward. Without the Terraform state, Terraform would lose the connection to the AWS resources and wouldn't know how to handle updates. As you can see, the Terraform state is very crucial.
+
+Until now, we used local files for the Terraform state. That's okay for a workshop but doesn't work for production workloads. The problem is, that we always need the state to apply changes. So if you want to work on the same stack with a team or some form of automation, then you need to share the state with others. The recommended solution is a remote backend. In this workshop, we focus on an S3 bucket, but you have [different options](https://www.terraform.io/language/settings/backends). Instead of keeping the state locally, we upload the state to the S3 bucket and read the current status from there.
+
+1. Create a new S3 bucket in the [AWS management console](https://s3.console.aws.amazon.com/s3/bucket/create?region=eu-west-1). Copy the name of the bucket afterward.
+2. Go to the file `main.tf` and replace it:
+  ```tf
+  terraform {
+    required_version = "~> 1.1.7"
+
+    backend "s3" {
+      key    = "terraform.tfstate"
+      region = "eu-west-1"
+    }
+  }
+
+  provider "aws" {
+    region = "eu-west-1"
+  }
+
+  data "aws_caller_identity" "current" {}
+
+  resource "aws_s3_bucket" "website" {
+    bucket = "hello-world-website-${data.aws_caller_identity.current.account_id}"
+    force_destroy = true
+  }
+
+  resource "aws_s3_object" "startpage" {
+    bucket = aws_s3_bucket.website.id
+    key    = "index.html"
+    source = "index.html"
+    acl = "public-read"
+    content_type = "text/html"
+  }
+
+  resource "aws_s3_bucket_website_configuration" "website" {
+    bucket = aws_s3_bucket.website.bucket
+
+    index_document {
+      suffix = "index.html"
+    }
+  }
+  ```
+3. Run `terraform init`. The command asks for the bucket name. 
+4. Run `terraform apply`. Everything should still work.
+
+Go to the S3 bucket in the AWS management console and check out the files. You should see a new file in the bucket. It's still the same file like the one we had locally, but now in the cloud. Terraform takes care of updating the Terraform state automatically.
+
+**Note:** This is a very basic setup for a remote backend. For a full-blown example, please see the [documentation](https://www.terraform.io/language/settings/backends/s3).
 
 ## Next
 
