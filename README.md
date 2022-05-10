@@ -7,9 +7,11 @@ The workshop empowers you to know the core concepts of *infrastructure as code* 
 
 * ✅ Set up a new Terraform project from scratch
 * ✅ Get familiar with the Terraform Language
+* ✅ Manage Terraform state using a remote backend with AWS S3
 * ✅ Learn the fundamentals of module composition
-* ✅ Deploy multiple environments with different configurations (e.g. staging and prod)
-* ✅ Manage Terraform remote states using AWS S3
+* ✅ Deploy multiple environments (e.g. staging and prod)
+* ✅ Implement a feature flag and learn more about parameterization
+
 
 ## 👾 Prerequisites
 
