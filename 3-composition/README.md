@@ -4,7 +4,6 @@ The previous lab introduced a third-party module to easily deploy a Lambda funct
 
 ## Custom Modules
 
-1. Delete the current stack by running `terraform destroy` and confirm with `yes`.
 1. Create new folders:
   ```sh
   mkdir modules
@@ -64,6 +63,10 @@ The previous lab introduced a third-party module to easily deploy a Lambda funct
   }
   ```
 8. Create a `variables.tf` file inside the `modules/api` folder:
+  ```sh
+  touch modules/api/variables.tf
+  ```
+9. Add the following lines to the file:
   ```tf
   variable "environment" {
     type = string
@@ -106,19 +109,25 @@ The previous lab introduced a third-party module to easily deploy a Lambda funct
 13. Add the following lines to the file:
   ```sh
   output "url" {
-    value = "http://${aws_s3_bucket_website_configuration.website.website_endpoint}"
+    description = "Hello World Website URL"
+    value       = "http://${aws_s3_bucket_website_configuration.website.website_endpoint}"
   }
   ```
-14. Create a `variables.tf` file inside the `modules/website` folder:
+8. Create a `variables.tf` file inside the `modules/website` folder:
+  ```sh
+  touch modules/website/variables.tf
+  ```
+9. Add the following lines to the file:
   ```tf
   variable "environment" {
     type = string
     description = "Identifier for the environment (e.g. staging, development or prod)"
   }
   ```
-15. Delete all old files on the root level:
+10. Delete old files/folders on the root level:
   ```sh
-  rm *
+  rm main.ts outputs.tf .terraform.lock.hcl
+  rm -rf .terraform builds
   ```
 
 That might be very overwhelming and understanding the big picture at this point is not easy. Before we get into the details, let's quickly add the Terraform stack for a staging environment. 
@@ -137,6 +146,11 @@ That might be very overwhelming and understanding the big picture at this point 
   ```tf
   terraform {
     required_version = "~> 1.1.7"
+
+    backend "s3" {
+      key    = "staging/terraform.tfstate"
+      region = "eu-west-1"
+    }
   }
 
   provider "aws" {
@@ -175,7 +189,8 @@ That might be very overwhelming and understanding the big picture at this point 
   ```sh
   cd staging
   ```
-7. Run `terraform init` and `terraform apply`. Confirm the deployment with `yes`.
+7. Run `terraform init`. Again, provide the S3 bucket name.
+8. Run `terraform apply` and confirm the deployment with `yes`.
 
 You might have noticed that we took everything from the previous labs and introduced two modules. One module for the API, one module for the website. New is, that we also created *input variables*. With input variables in Terraform, we can define a public interface for modules. So far, we introduced a simple input variable to pass an environment identifier to the modules. We use the identifier to create unique names for AWS resources (like the S3 bucket name). 
 
@@ -185,7 +200,14 @@ So staging is live, why not deploy prod?
 
 ## Production Environment
 
-Repeat all steps we did to create a staging environment. Instead of creating a `staging` folder, simply create a `prod` folder. Make sure you use another identifier for the `environment` input variable.
+Repeat all steps we did to create a staging environment. Instead of creating a `staging` folder, simply create a `prod` folder. Make sure you use another identifier for the `environment` input variable. Also, update the bucket key for the remote backend: 
+
+```tf
+backend "s3" {
+  key    = "prod/terraform.tfstate"
+  region = "eu-west-1"
+}
+```
 
 After all, you should have two environments running in your AWS account.
 
