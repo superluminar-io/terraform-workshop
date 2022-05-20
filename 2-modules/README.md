@@ -1,6 +1,6 @@
 # Modules
 
-In the first lab, we bootstrapped Terraform and got familiar with the very basics. Let's extend the stack and add a simple *Hello World API*. We want to use [Amazon API Gateway](https://aws.amazon.com/api-gateway/) and [AWS Lambda](https://aws.amazon.com/lambda/) (with Node.js) for a serverless API returning a hello world statement.
+In the first lab, we bootstrapped Terraform and got familiar with the very basics. Let’s extend the stack and add a simple *Hello World API*. We want to use [Amazon API Gateway](https://aws.amazon.com/api-gateway/) and [AWS Lambda](https://aws.amazon.com/lambda/) (with Node.js) for a serverless API returning a hello world statement.
 
 ## Lambda function
 
@@ -70,15 +70,15 @@ In the first lab, we bootstrapped Terraform and got familiar with the very basic
   }
   ```
 
-So far, we used *resources* to describe AWS infrastructure. Think of it as a low-level component to describe one specific entity in AWS (like an IAM user or an S3 bucket). Sometimes we have a combination of resources widely used we would like to bundle into an abstraction layer. That's where modules come in.
+So far, we used *resources* to describe AWS infrastructure. Think of it as a low-level component to describe one specific entity in AWS (like an IAM user or an S3 bucket). Sometimes we have a combination of resources widely used we would like to bundle into an abstraction layer. That’s where modules come in.
 
 The good part is, that we can write our own modules or use third-party modules. In this case, we used a third-party module called [*terraform-aws-modules/lambda/aws*](https://registry.terraform.io/modules/terraform-aws-modules/lambda/aws/latest). So instead of wiring up many resources by ourselves to deploy a simple Lambda function, we can just use the module. It bundles the source code and handles the IAM policies in the background.
 
 The Terraform community is very vibrant and you can find thousands of modules. Before reinventing the wheel, check out the [Terraform Registry](https://registry.terraform.io).
 
-For third-party modules, it's [good practice](https://www.terraform.io/language/expressions/version-constraints#module-versions) to add the version attribute and define a specific version. That ensures you don't accidentally upgrade third-party modules.
+For third-party modules, it’s [good practice](https://www.terraform.io/language/expressions/version-constraints#module-versions) to add the version attribute and define a specific version. That ensures you don’t accidentally upgrade third-party modules.
 
-That's it for the Lambda function. Let's go to the API Gateway.
+That’s it for the Lambda function. Let’s go to the API Gateway.
 
 ## API Gateway
 

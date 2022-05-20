@@ -66,9 +66,9 @@ The API becomes more powerful in this lab, but we want to be careful and only ro
   };
   ```
 
-We extended the *API* module by introducing a new input variable `enable_greeting_feature`. The default is set to `false`, so we can't accidentally distribute the new feature. In the `main.tf` file, we simply pass the input variable down to the AWS Lambda function as an environment variable. Finally, in the Lambda function, we use the environment variable to flip on the new feature.
+We extended the *API* module by introducing a new input variable `enable_greeting_feature`. The default is set to `false`, so we can’t accidentally distribute the new feature. In the `main.tf` file, we simply pass the input variable down to the AWS Lambda function as an environment variable. Finally, in the Lambda function, we use the environment variable to flip on the new feature.
 
-The new feature wouldn't appear after deployment (feel free to try it and deploy your staging and production environment). We need to configure the new input variable explicitly. Let's do it.
+The new feature wouldn’t appear after deployment (feel free to try it and deploy your staging and production environment). We need to configure the new input variable explicitly. Let’s do it.
 
 ## Rollout
 
@@ -111,7 +111,7 @@ The new feature wouldn't appear after deployment (feel free to try it and deploy
   ```
 5. Here we go! The new feature works on staging.
 
-With input variables, we can make modules configurable for different scenarios. In this case, we only want to deploy a new feature to the staging environment, but not to production. In practice, it's a common requirement to configure environments differently. For example, we want to configure provisioned capacities (like CPU or memory allocation), a global CDN or custom domains with SSL certificates.
+With input variables, we can make modules configurable for different scenarios. In this case, we only want to deploy a new feature to the staging environment, but not to production. In practice, it’s a common requirement to configure environments differently. For example, we want to configure provisioned capacities (like CPU or memory allocation), a global CDN or custom domains with SSL certificates.
 
 ## Final words
 

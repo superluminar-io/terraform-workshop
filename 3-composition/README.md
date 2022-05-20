@@ -132,7 +132,7 @@ The previous lab introduced a third-party module to easily deploy a Lambda funct
   rm -rf .terraform builds
   ```
 
-That might be very overwhelming and understanding the big picture at this point is not easy. Before we get into the details, let's quickly add the Terraform stack for a staging environment. 
+That might be very overwhelming and understanding the big picture at this point is not easy. Before we get into the details, let’s quickly add the Terraform stack for a staging environment. 
 
 ## Staging Environment
 
@@ -196,7 +196,7 @@ That might be very overwhelming and understanding the big picture at this point 
 
 You might have noticed that we took everything from the previous labs and introduced two modules. One module for the API, one module for the website. New is, that we also created *input variables*. With input variables in Terraform, we can define a public interface for modules. So far, we introduced a simple input variable to pass an environment identifier to the modules. We use the identifier to create unique names for AWS resources (like the S3 bucket name). 
 
-The modules folder itself functions as a library. We need a Terraform stack wiring up the modules, configuring the input variables and connecting the dots essentially. Therefore, we created the `staging` folder. As you can see in the `main.tf` file inside the staging folder, we import our modules and configure the `environment` variable. That's all we have to do here as the core business logic lives now in re-usable modules.
+The modules folder itself functions as a library. We need a Terraform stack wiring up the modules, configuring the input variables and connecting the dots essentially. Therefore, we created the `staging` folder. As you can see in the `main.tf` file inside the staging folder, we import our modules and configure the `environment` variable. That’s all we have to do here as the core business logic lives now in re-usable modules.
 
 So staging is live, why not deploy prod?
 
@@ -215,4 +215,4 @@ After all, you should have two environments running in your AWS account.
 
 ## Next
 
-In the [next lab](../4-parameterization/), we want to introduce another input variable to deploy a new feature to the staging environment while the production environment shouldn't deliver the new upcoming feature.
+In the [next lab](../4-parameterization/), we want to introduce another input variable to deploy a new feature to the staging environment while the production environment shouldn’t deliver the new upcoming feature.
