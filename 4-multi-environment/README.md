@@ -1,6 +1,6 @@
 # Multi Environment
 
-With custom modules, we already have reusable components ready for a multi-environment setup. So far, we have always deployed one Terraform stack. In this lab, we want to further improve the stack and deploy two stacks.
+With custom modules, we already have reusable components ready for a multi-environment setup. So far, we have always deployed one Terraform stack. In this lab, we want to further improve the codebase and deploy two stacks.
 
 ## Staging environment
 
@@ -124,7 +124,7 @@ With custom modules, we already have reusable components ready for a multi-envir
 11. Run `terraform init`. Again, provide the S3 bucket name.
 12. Run `terraform apply` and confirm the deployment with `yes`.
 
-You might have noticed that we extended the modules and introduced so-called *input variables*. With input variables in Terraform, we can define a public interface for modules. So far, we introduced a simple input variable to pass an environment identifier to the modules. We use the identifier to create unique names for AWS resources (like the S3 bucket name). 
+You might have noticed that we extended the modules and introduced so-called *input variables*. With input variables in Terraform, we can define a public interface for modules. We introduced a simple input variable to pass an environment identifier to the modules. The identifier is important to create unique names for AWS resources (like the S3 bucket name).
 
 After that, we created the `staging` folder and moved the existing root module into the folder. We updated the `main.tf` file to configure the `environment` variable and also updated the remote backend. The remote backend has a new key to create a dedicated and separated Terraform state just for the staging environment.
 
