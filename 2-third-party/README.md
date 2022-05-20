@@ -1,4 +1,4 @@
-# Modules
+# Third Party
 
 In the first lab, we bootstrapped Terraform and got familiar with the very basics. Let’s extend the stack and add a simple *Hello World API*. We want to use [Amazon API Gateway](https://aws.amazon.com/api-gateway/) and [AWS Lambda](https://aws.amazon.com/lambda/) (with Node.js) for a serverless API returning a hello world statement.
 
