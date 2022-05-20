@@ -124,8 +124,16 @@ https://XXXXXXXXXX.execute-api.eu-west-1.amazonaws.com/?name=alice
 
 With input variables, we can make modules configurable for different scenarios. In this case, we only want to deploy a new feature to the staging environment, but not to production. In practice, it’s a common requirement to configure environments differently. For example, we want to configure provisioned capacities (like CPU or memory allocation), a global CDN or custom domains with SSL certificates.
 
+## Clean up
+
+If you are finished with the workshop and don't plan to use the resources you deployed anymore, you need to remove them from your aws account so that you don't incur any unnecessary costs.
+
+1. To do this, if you are not already there, navigate to the staging folder and run the `terraform destroy` command. You then need to perform the same steps for your production environment.
+
+2. You also made an S3 bucket in the AWS management console to store your terraform state file. To remove this bucket, navigate to your [S3 Buckets](https://s3.console.aws.amazon.com/s3/), select the state bucket your created and delete the contents by clicking `empty`. Once the contents of the bucket are deleted, you can then delete the the bucket itself.
+
 ## Final words
 
-Well, that was the last lab for the Terraform workshop. We hope you enjoyed the workshop. Before you go, don't forget to remove the stack deployed in your aws account with the `terraform destroy` command. If you want to learn more about Terraform and dive deeper, take a look at the [reading list](../README.md#📖-further-reading).
+Well, that was the last lab for the Terraform workshop. We hope you enjoyed the workshop. If you want to learn more about Terraform and dive deeper, take a look at the [reading list](../README.md#📖-further-reading).
 
 Cheers ✌️
