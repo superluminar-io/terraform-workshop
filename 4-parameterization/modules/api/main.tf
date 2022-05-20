@@ -4,6 +4,7 @@ locals {
 
 module "lambda_function" {
   source = "terraform-aws-modules/lambda/aws"
+  version = "3.2.0"
 
   function_name = "${local.project_name}-${var.environment}"
   handler       = "helloworld.handler"

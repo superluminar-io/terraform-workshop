@@ -30,7 +30,8 @@ The previous lab introduced a third-party module to easily deploy a Lambda funct
   }
 
   module "lambda_function" {
-    source = "terraform-aws-modules/lambda/aws"
+    source  = "terraform-aws-modules/lambda/aws"
+    version = "3.2.0"
 
     function_name = "${local.project_name}-${var.environment}"
     handler       = "helloworld.handler"

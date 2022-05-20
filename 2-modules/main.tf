@@ -35,7 +35,8 @@ resource "aws_s3_bucket_website_configuration" "website" {
 }
 
 module "lambda_function" {
-  source = "terraform-aws-modules/lambda/aws"
+  source  = "terraform-aws-modules/lambda/aws"
+  version = "3.2.0"
 
   function_name = "hello-world"
   handler       = "helloworld.handler"
