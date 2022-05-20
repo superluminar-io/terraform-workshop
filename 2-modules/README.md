@@ -54,6 +54,7 @@ In the first lab, we bootstrapped Terraform and got familiar with the very basic
 
   module "lambda_function" {
     source = "terraform-aws-modules/lambda/aws"
+    version = "3.2.0"
 
     function_name = "hello-world"
     handler       = "helloworld.handler"
@@ -74,6 +75,8 @@ So far, we used *resources* to describe AWS infrastructure. Think of it as a low
 The good part is, that we can write our own modules or use third-party modules. In this case, we used a third-party module called [*terraform-aws-modules/lambda/aws*](https://registry.terraform.io/modules/terraform-aws-modules/lambda/aws/latest). So instead of wiring up many resources by ourselves to deploy a simple Lambda function, we can just use the module. It bundles the source code and handles the IAM policies in the background.
 
 The Terraform community is very vibrant and you can find thousands of modules. Before reinventing the wheel, check out the [Terraform Registry](https://registry.terraform.io).
+
+For third-party modules, it's [good practice](https://www.terraform.io/language/expressions/version-constraints#module-versions) to add the version attribute and define a specific version. That ensures you don't accidentally upgrade third-party modules.
 
 That's it for the Lambda function. Let's go to the API Gateway.
 
@@ -118,7 +121,8 @@ That's it for the Lambda function. Let's go to the API Gateway.
   }
 
   module "lambda_function" {
-    source = "terraform-aws-modules/lambda/aws"
+    source  = "terraform-aws-modules/lambda/aws"
+    version = "3.2.0"
 
     function_name = "hello-world"
     handler       = "helloworld.handler"
