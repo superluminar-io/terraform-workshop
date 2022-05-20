@@ -168,4 +168,4 @@ You might have noticed the manual creation of the S3 bucket. To keep it simple f
 
 ## Next
 
-That’s it for the first lab. We learned more about the Terraform Language (provider, data sources, resources and outputs) and deployed some AWS resources. In the [next lab](../2-modules/), we extend the stack and use a third-party module.
+That’s it for the first lab. We learned more about the Terraform Language (provider, data sources, resources and outputs) and deployed some AWS resources. In the [next lab](../2-third-party/), we extend the stack and use a third-party module.
