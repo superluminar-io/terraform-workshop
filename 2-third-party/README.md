@@ -163,4 +163,4 @@ Okay, nothing really special here. We extended the stack and introduced more res
 
 ## Next
 
-The [next lab](../3-composition/) covers a very important topic: Instead of just deploying the stack once, we want to deploy the stack for multiple environments (e.g. staging and prod). Along the way, we discuss module composition and code splitting.
+The [next lab](../3-module-composition/) covers a very important topic: Instead of just deploying the stack once, we want to deploy the stack for multiple environments (e.g. staging and prod). Along the way, we discuss module composition and code splitting.
