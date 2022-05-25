@@ -4,7 +4,8 @@ The previous lab introduced a third-party module to easily deploy a Lambda funct
 
 ## Custom Modules
 
-1. Create new folders:
+1. Before we start with the refactoring, make sure you deleted the existing stack by running `terraform destroy`. Confirm the command with `yes`.
+2. Create new folders:
   ```sh
   mkdir modules
   mkdir modules/api
