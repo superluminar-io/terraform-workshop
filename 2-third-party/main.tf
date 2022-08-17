@@ -1,14 +1,14 @@
 terraform {
   required_version = "~> 1.1.7"
-}
-
-provider "aws" {
-  region = "eu-central-1"
 
   backend "s3" {
     key    = "terraform.tfstate"
     region = "eu-central-1"
   }
+}
+
+provider "aws" {
+  region = "eu-central-1"
 }
 
 data "aws_caller_identity" "current" {}
