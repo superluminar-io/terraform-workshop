@@ -85,12 +85,12 @@ terraform {
 
   backend "s3" {
     key    = "staging/terraform.tfstate"
-    region = "eu-west-1"
+    region = "eu-central-1"
   }
 }
 
 provider "aws" {
-  region = "eu-west-1"
+  region = "eu-central-1"
 }
 
 module "website" {
@@ -117,7 +117,7 @@ module "api" {
 4. Now, add the `name` query param to the URL, e.g.:
 
 ```
-https://XXXXXXXXXX.execute-api.eu-west-1.amazonaws.com/?name=alice
+https://XXXXXXXXXX.execute-api.eu-central-1.amazonaws.com/?name=alice
 ```
 
 5. Here we go! The new feature works on staging.

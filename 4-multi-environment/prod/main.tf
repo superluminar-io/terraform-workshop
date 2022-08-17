@@ -3,22 +3,22 @@ terraform {
 
   backend "s3" {
     key    = "prod/terraform.tfstate"
-    region = "eu-west-1"
+    region = "eu-central-1"
   }
 }
 
 provider "aws" {
-  region = "eu-west-1"
+  region = "eu-central-1"
 }
 
 module "website" {
   source = "../modules/website"
-  
+
   environment = "prod"
 }
 
 module "api" {
   source = "../modules/api"
-  
+
   environment = "prod"
 }

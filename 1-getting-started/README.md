@@ -13,7 +13,7 @@ Let’s get started by bootstrapping Terraform and deploying some resources to A
   }
 
   provider "aws" {
-    region = "eu-west-1"
+    region = "eu-central-1"
   }
   ```
 3. Run `terraform init`
@@ -24,7 +24,7 @@ Let’s get started by bootstrapping Terraform and deploying some resources to A
   }
 
   provider "aws" {
-    region = "eu-west-1"
+    region = "eu-central-1"
   }
 
   data "aws_caller_identity" "current" {}
@@ -67,7 +67,7 @@ Let’s extend the stack and deploy more resources:
   }
 
   provider "aws" {
-    region = "eu-west-1"
+    region = "eu-central-1"
   }
 
   data "aws_caller_identity" "current" {}
@@ -109,7 +109,7 @@ We also introduced an output: Output is very helpful to retrieve certain data af
 ```sh
 Outputs:
 
-website_url = "http://hello-world-website-XXXXXXXXXXX.s3-website-eu-west-1.amazonaws.com"
+website_url = "http://hello-world-website-XXXXXXXXXXX.s3-website-eu-central-1.amazonaws.com"
 ```
 
 Thanks to the output, we can easily find the endpoint of the static website without navigating to the AWS Management Console. In addition, the output might be also interesting for automation (e.g. get the URL to run integration tests etc.).
@@ -120,7 +120,7 @@ Before we continue and go to the next lab, we need to talk about the Terraform s
 
 Until now, we used local files for the Terraform state. That’s okay for a workshop but doesn’t work for production workloads. The problem is, that we always need the state to apply changes. So if you want to work on the same stack with a team or some form of automation, then you need to share the state with others. The recommended solution is a remote backend. In this workshop, we focus on an S3 bucket, but you have [different options](https://www.terraform.io/language/settings/backends). Instead of keeping the state locally, we upload the state to the S3 bucket and read the current status from there.
 
-1. Create a new S3 bucket in the [AWS Management Console](https://s3.console.aws.amazon.com/s3/bucket/create?region=eu-west-1). Copy the name of the bucket afterward.
+1. Create a new S3 bucket in the [AWS Management Console](https://s3.console.aws.amazon.com/s3/bucket/create?region=eu-central-1). Copy the name of the bucket afterward.
 2. Go to the file `main.tf` and replace it:
   ```tf
   terraform {
@@ -128,12 +128,12 @@ Until now, we used local files for the Terraform state. That’s okay for a work
 
     backend "s3" {
       key    = "terraform.tfstate"
-      region = "eu-west-1"
+      region = "eu-central-1"
     }
   }
 
   provider "aws" {
-    region = "eu-west-1"
+    region = "eu-central-1"
   }
 
   data "aws_caller_identity" "current" {}

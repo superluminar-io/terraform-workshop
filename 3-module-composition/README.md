@@ -107,12 +107,12 @@ The previous lab introduced a third-party module to easily deploy a Lambda funct
 
     backend "s3" {
       key    = "terraform.tfstate"
-      region = "eu-west-1"
+      region = "eu-central-1"
     }
   }
 
   provider "aws" {
-    region = "eu-west-1"
+    region = "eu-central-1"
   }
 
   module "website" {

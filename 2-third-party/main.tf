@@ -3,11 +3,11 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-west-1"
+  region = "eu-central-1"
 
   backend "s3" {
     key    = "terraform.tfstate"
-    region = "eu-west-1"
+    region = "eu-central-1"
   }
 }
 

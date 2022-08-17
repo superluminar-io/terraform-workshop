@@ -97,12 +97,12 @@ With custom modules, we already have reusable components ready for a multi-envir
 
     backend "s3" {
       key    = "staging/terraform.tfstate"
-      region = "eu-west-1"
+      region = "eu-central-1"
     }
   }
 
   provider "aws" {
-    region = "eu-west-1"
+    region = "eu-central-1"
   }
 
   module "website" {
@@ -137,7 +137,7 @@ Repeat all steps we did to create a staging environment. Instead of creating a `
 ```tf
 backend "s3" {
   key    = "prod/terraform.tfstate"
-  region = "eu-west-1"
+  region = "eu-central-1"
 }
 ```
 

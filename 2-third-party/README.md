@@ -21,12 +21,12 @@ In the first lab, we bootstrapped Terraform and got familiar with the very basic
 
     backend "s3" {
       key    = "terraform.tfstate"
-      region = "eu-west-1"
+      region = "eu-central-1"
     }
   }
 
   provider "aws" {
-    region = "eu-west-1"
+    region = "eu-central-1"
   }
 
   data "aws_caller_identity" "current" {}
@@ -63,7 +63,7 @@ In the first lab, we bootstrapped Terraform and got familiar with the very basic
   }
   ```
 5. Run `terraform init`, then `terraform apply`, and confirm the changes with `yes`.
-6. Go to the [Lambda console](https://eu-west-1.console.aws.amazon.com/lambda/home?region=eu-west-1#/functions/hello-world?tab=testing). You should see the deployed Lambda function. Now, scroll down a little bit and click on the `Test` button. Click on `Details`. You should see the output of the Lambda function:
+6. Go to the [Lambda console](https://eu-central-1.console.aws.amazon.com/lambda/home?region=eu-central-1#/functions/hello-world?tab=testing). You should see the deployed Lambda function. Now, scroll down a little bit and click on the `Test` button. Click on `Details`. You should see the output of the Lambda function:
   ```json
   {
     "message": "Hello from Lambda! 👋"
@@ -89,12 +89,12 @@ That’s it for the Lambda function. Let’s go to the API Gateway.
 
     backend "s3" {
       key    = "terraform.tfstate"
-      region = "eu-west-1"
+      region = "eu-central-1"
     }
   }
 
   provider "aws" {
-    region = "eu-west-1"
+    region = "eu-central-1"
   }
 
   data "aws_caller_identity" "current" {}
