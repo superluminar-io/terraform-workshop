@@ -1,23 +1,10 @@
 # Getting started
 
-Let’s get started by bootstrapping Terraform and deploying some resources to AWS. Instead of just deploying some random resources, we want to create an S3 bucket and enable static website hosting. Ultimately, we serve a static HTML file.
+Let’s get started by deploying some resources to AWS. Instead of just deploying some random resources, we want to create an S3 bucket and enable static website hosting. Ultimately, we serve a static HTML file.
   
-## Bootstrap Terraform
+## Creating a first bucket
 
-1. Create a new folder and cd into it.
-1. Create a new file `main.tf`
-2. Add these lines to the `main.tf`:
-  ```tf
-  terraform {
-    required_version = "~> 1.1.7"
-  }
-
-  provider "aws" {
-    region = "eu-central-1"
-  }
-  ```
-3. Run `terraform init`
-4. Replace the `main.tf` file by adding the first resource:
+1. Replace the `main.tf` file by adding the first resource:
   ```tf
   terraform {
     required_version = "~> 1.1.7"
@@ -34,7 +21,7 @@ Let’s get started by bootstrapping Terraform and deploying some resources to A
     force_destroy = true
   }
   ```
-5. Run `terraform apply` and confirm the deployment with `yes`.
+2. Run `terraform apply` and confirm the deployment with `yes`.
 
 We just created an empty S3 bucket. Go to the [S3 console](https://s3.console.aws.amazon.com/s3/buckets) and verify the existence. 
 
