@@ -17,6 +17,7 @@ The workshop empowers you to know the core concepts of *infrastructure as code* 
 
 Before jumping to the first lab, please double-check the list and prepare your computer.
 
+- Follow the instructions in the [bootstrap section](./0-bootstrap)
 - [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - [AWS credentials in the terminal](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 - IDE with Terraform support (e.g. [VS Code](https://code.visualstudio.com/) / [Terraform extension](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform))
