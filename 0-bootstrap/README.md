@@ -55,7 +55,7 @@ Terraform v1.1.9
 
 ### Bootstrap the Terraform project
 
-1. Create a new folder and cd into it.
+1. Create a new folder `my-project` and cd into it.
 1. Create a new file `main.tf`
 2. Add these lines to the `main.tf`:
   ```tf
