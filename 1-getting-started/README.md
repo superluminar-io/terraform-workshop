@@ -47,7 +47,7 @@ Let’s extend the stack and deploy more resources:
     </body>
   </html>
   ```
-3. Replace the `main.tf` file:
+3. Replace the `main.tf` file with:
   ```tf
   terraform {
     required_version = "~> 1.1.7"
@@ -107,8 +107,8 @@ Before we continue and go to the next lab, we need to talk about the Terraform s
 
 Until now, we used local files for the Terraform state. That’s okay for a workshop but doesn’t work for production workloads. The problem is, that we always need the state to apply changes. So if you want to work on the same stack with a team or some form of automation, then you need to share the state with others. The recommended solution is a remote backend. In this workshop, we focus on an S3 bucket, but you have [different options](https://www.terraform.io/language/settings/backends). Instead of keeping the state locally, we upload the state to the S3 bucket and read the current status from there.
 
-1. Create a new S3 bucket in the [AWS Management Console](https://s3.console.aws.amazon.com/s3/bucket/create?region=eu-central-1). Copy the name of the bucket afterward.
-2. Go to the file `main.tf` and replace it:
+1. Create a new S3 bucket in the [AWS Management Console](https://s3.console.aws.amazon.com/s3/bucket/create?region=eu-central-1). Copy the name of the bucket and keep for use in **step 3** as well as other workshop units.
+2. Go to the file `main.tf` and replace it with:
   ```tf
   terraform {
     required_version = "~> 1.1.7"

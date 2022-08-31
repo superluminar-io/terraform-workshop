@@ -100,7 +100,7 @@ The previous lab introduced a third-party module to easily deploy a Lambda funct
     value       = "http://${aws_s3_bucket_website_configuration.website.website_endpoint}"
   }
   ```
-17. Replace the root `main.tf` file:
+17. Replace the root `main.tf` file with:
   ```tf
   terraform {
     required_version = "~> 1.1.7"
@@ -123,7 +123,7 @@ The previous lab introduced a third-party module to easily deploy a Lambda funct
     source = "./modules/api"
   }
   ```
-18. Replace the root `outputs.tf` file:
+18. Replace the root `outputs.tf` file with:
   ```tf
   output "api_url" {
     description = "Hello World API URL"

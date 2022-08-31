@@ -14,7 +14,7 @@ In the first lab, we bootstrapped Terraform and got familiar with the very basic
     };
   };
   ```
-4. Now, go back to the `main.tf` file and replace it:
+4. Now, go back to the `main.tf` file and replace it with:
   ```tf
   terraform {
     required_version = "~> 1.1.7"
@@ -82,7 +82,7 @@ That’s it for the Lambda function. Let’s go to the API Gateway.
 
 ## API Gateway
 
-1. Replace the `main.tf` file:
+1. Replace the `main.tf` file with:
   ```tf
   terraform {
     required_version = "~> 1.1.7"
