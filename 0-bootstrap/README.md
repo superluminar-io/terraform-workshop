@@ -2,6 +2,10 @@
 
 Let’s get started by bootstrapping Terraform and out AWS environment.
 
+## IDE
+For the whole workshop we recommend to set up your IDE with Terraform support or to use an IDE with Terraform support
+(e.g. [VS Code](https://code.visualstudio.com/) / [Terraform extension](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform))
+
 ## AWS credentials setup
 
 Before you start you will need

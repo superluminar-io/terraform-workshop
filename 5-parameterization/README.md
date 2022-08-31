@@ -4,7 +4,7 @@ The API becomes more powerful in this lab, but we want to be careful and only ro
 
 ## Implement new feature
 
-1. Go to the file `modules/api/variables.tf` and replace it:
+1. Go to the file `modules/api/variables.tf` and replace it with:
 
 ```
 variable "environment" {
@@ -19,7 +19,7 @@ variable "enable_greeting_feature" {
 }
 ```
 
-2. Go to the file `modules/api/main.tf` and replace it:
+2. Go to the file `modules/api/main.tf` and replace it with:
 
 ```tf
 locals {
@@ -54,7 +54,7 @@ resource "aws_apigatewayv2_api" "hello_world" {
 }
 ```
 
-3. Go to the file `modules/api/functions/helloworld.js` and replace it:
+3. Go to the file `modules/api/functions/helloworld.js` and replace it with:
 
 ```js
 const greetingEnabled = process.env.GREETING_ENABLED === "true";
@@ -77,7 +77,7 @@ The new feature wouldn’t appear after deployment (feel free to try it and depl
 
 ## Rollout
 
-1. Go to the file `staging/main.tf` and replace it:
+1. Go to the file `staging/main.tf` and replace it with:
 
 ```tf
 terraform {

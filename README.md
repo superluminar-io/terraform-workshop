@@ -12,21 +12,11 @@ The workshop empowers you to know the core concepts of *infrastructure as code* 
 * ✅ Deploy multiple environments (e.g. staging and prod)
 * ✅ Implement a feature flag and learn more about parameterization
 
-
-## 👾 Prerequisites
-
-Before jumping to the first lab, please double-check the list and prepare your computer.
-
-- Follow the instructions in the [bootstrap section](./0-bootstrap)
-- [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
-- [AWS credentials in the terminal](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
-- IDE with Terraform support (e.g. [VS Code](https://code.visualstudio.com/) / [Terraform extension](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform))
-- [tfenv (recommended)](https://github.com/tfutils/tfenv)
-
 ## 🤓 Labs
 
 We recommend you walk through the labs step by step and follow the instructions. Feel free to further extend the stack, play around with resources and dive deeper. Have fun ✌️
 
+0. [Boostrap Environment](./0-bootstrap) Please double-check the instructions and set up your working environment
 1. [Getting Started](./1-getting-started): Get started with Terraform, deploy some AWS resources, and create a remote backend for the Terraform state
 2. [Third Party](./2-third-party/): Use a third-party *module* to easily build and deploy an AWS Lambda function
 3. [Module Composition](./3-module-composition/): Improve the growing codebase by introducing custom modules and module composition
