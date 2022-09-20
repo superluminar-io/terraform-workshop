@@ -8,3 +8,6 @@ terraform.tfvars
 
 # Lambda Function Builds
 builds
+
+# idea config
+.idea/
