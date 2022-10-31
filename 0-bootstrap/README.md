@@ -14,7 +14,7 @@ Before you start you will need
 - administrator credentials to this account
 - install the aws cli according to the [documentation](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
  
-If you already have a mechanism in place for allowing access to AWS accounts (like SAML or AWS SSO), please use this. 
+If you already have a mechanism in place for allowing access to AWS accounts (like [SAML](https://cloud.nwse.io/how-to/getting-started/login.html#terminal-cli) or AWS SSO), please use this. 
 Otherwise, you can create an IAM users as described [here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-prereqs.html#getting-started-prereqs-iam).
 
 Lastly you have to publish your credentials to your shell environment. If you created an IAM user earlier, 
